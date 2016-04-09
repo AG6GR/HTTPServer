@@ -53,7 +53,7 @@ public class HTTPServer
 	 */
 	private static String getMIME(String filename)
 	{
-		System.out.println(filename);
+		System.out.println("Requested file: " + filename);
 		String ext = filename.substring(filename.lastIndexOf(".") + 1).toLowerCase();
 		String ans = MIME_TYPES.get(ext);
 		if (ans != null)
