@@ -178,7 +178,20 @@ public class HTTPServer
 					
 					//String date = "";
 					//SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z");
-					if (requestFile.isFile())
+					/* Disallow accessing hidden files */
+					if (requestFile.getName().charAt(0) == '.' || 
+						line.indexOf('.') != line.lastIndexOf('.'))
+					{
+						out.write(HEADER_HTTP + "404 Not Found\r\n");
+						out.write(HEADER_SERVER + "\r\n");
+						date = dateFormat.format(new Date());
+						out.write(HEADER_DATE + date + "\r\n");
+						out.write(HEADER_TYPE + "text/plain\r\n");
+						out.write("\r\n");
+						out.write("File " + input[1] + " not found");
+						out.flush();
+					}
+					else if (requestFile.isFile())
 					{
 						out.write(HEADER_HTTP + "200 OK\r\n");
 						out.write(HEADER_SERVER + "\r\n");
