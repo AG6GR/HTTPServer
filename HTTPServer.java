@@ -58,12 +58,12 @@ public class HTTPServer
 		String ans = MIME_TYPES.get(ext);
 		if (ans != null)
 		{
-			System.out.println(ans);
+			System.out.println("MIME type: " + ans);
 			return ans;
 		}
 		else
 		{
-			System.out.println("default");
+			System.out.println("MIME type: default");
 			return "application/octet-stream";	
 		}
 		
