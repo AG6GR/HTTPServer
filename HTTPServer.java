@@ -180,7 +180,7 @@ public class HTTPServer
 					//SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z");
 					/* Disallow accessing hidden files */
 					if (requestFile.getName().charAt(0) == '.' || 
-						line.indexOf('.') != line.lastIndexOf('.'))
+						input[1].indexOf('.') != input[1].lastIndexOf('.'))
 					{
 						out.write(HEADER_HTTP + "404 Not Found\r\n");
 						out.write(HEADER_SERVER + "\r\n");
