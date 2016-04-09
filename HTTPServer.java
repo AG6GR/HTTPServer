@@ -1,3 +1,14 @@
+/* 
+ * HTTPServer.java
+ *
+ * Simple HTTP server including directory listing.
+ *
+ * Copyright (C) 2016 Sunny He
+ *
+ * This software may be modified and distributed under the terms
+ * of the MIT license.  See the LICENSE file for details.
+ */
+ 
 import java.net.*;
 import java.io.*;
 import java.util.*;
@@ -13,7 +24,7 @@ public class HTTPServer
 	private static final String HEADER_LENGTH = "Content-Length: ";
 	private static final String HEADER_LASTMODIFIED = "Last-Modified: ";
 	
-	private static final int PORT = 8088;
+	private static final int PORT = 80;
 	private static final byte[] buffer = new byte[1024];
 	private static HashMap<String, String> MIME_TYPES = null;
 	
