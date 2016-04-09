@@ -11,7 +11,8 @@
  
 import java.net.*;
 import java.io.*;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Date;
 import java.text.SimpleDateFormat;
 
 public class HTTPServer
@@ -53,17 +54,17 @@ public class HTTPServer
 	 */
 	private static String getMIME(String filename)
 	{
-		System.out.println("Requested file: " + filename);
+		System.out.println("\tRequested file: " + filename);
 		String ext = filename.substring(filename.lastIndexOf(".") + 1).toLowerCase();
 		String ans = MIME_TYPES.get(ext);
 		if (ans != null)
 		{
-			System.out.println("MIME type: " + ans);
+			System.out.println("\tMIME type: " + ans);
 			return ans;
 		}
 		else
 		{
-			System.out.println("MIME type: default");
+			System.out.println("\tMIME type: default");
 			return "application/octet-stream";	
 		}
 		
