@@ -45,7 +45,12 @@ public class HTTPServer
 		MIME_TYPES.put("zip", "application/zip");
 	}
 	
-	
+	/**
+	 * Determine the MIME type of a given filename based on its extension.
+	 *
+	 * @param filename The filename to analyze
+	 * @return A string with the MIME type corresponding to the given filename.
+	 */
 	private static String getMIME(String filename)
 	{
 		System.out.println(filename);
@@ -63,6 +68,13 @@ public class HTTPServer
 		}
 		
 	}
+	/**
+	 * Generates an HTML directory listing of the given directory.
+	 *
+	 * @param directory A File representing the directory to be listed
+	 * @param rootDir The root directory of the server (used to convert absolute paths to relative paths)
+	 * @return String containing HTML directory listing
+	 */
 	private static String listDirectory(File directory, String rootDir)
 	{
 		File[] fileList = directory.listFiles();
@@ -118,7 +130,9 @@ public class HTTPServer
 		return text;
 				
 	}
-	
+	/**
+	 * Runs an instance of the HTTPServer.
+	 */
 	public static void main(String[] args)
 	{
 		String DOC_ROOT = System.getProperty("user.dir");
