@@ -100,7 +100,11 @@ public class HTTPServer
 			 "</TR>\n";
 		for (File file : fileList)
 		{
-			
+			// Exclude hidden files
+			if(file.getName().charAt(0) == '.')
+			{
+				continue;
+			}
 			date = dateFormat.format(new Date(file.lastModified()));
 			text += "<TR>\n" +
 			   "<TD>\n" +
