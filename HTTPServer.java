@@ -176,7 +176,7 @@ public class HTTPServer
 				File requestFile = null;
 				if (input[1].equals("/"))
 				{
-					new File(DOC_ROOT + INDEX_FILE);
+					requestFile = new File(DOC_ROOT + INDEX_FILE);
 				}
 				else
 				{
