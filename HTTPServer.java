@@ -18,7 +18,7 @@ import java.text.SimpleDateFormat;
 public class HTTPServer
 {
 	private static final String HEADER_HTTP = "HTTP/1.1 ";
-	private static final String HEADER_SERVER = "Server: Sunny's Java Server";
+	private static final String HEADER_SERVER = "Server: Simple Java Server";
 	private static final String HEADER_DATE = "Date: ";
 	private static final String HEADER_CONNECTION = "Connection: close";
 	private static final String HEADER_TYPE = "Content-Type: ";
@@ -216,7 +216,7 @@ public class HTTPServer
 						}
 						outStream.flush();
 					}
-					else if (requestFile.getName().equals("/"))
+					else if (requestFile.getName().equals(DOC_ROOT))
 					{
 						/* Redirect homepage to index file */
 						out.write(HEADER_HTTP + "301 Moved Permanently\r\n");
