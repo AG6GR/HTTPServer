@@ -24,6 +24,7 @@ public class HTTPServer
 	private static final String HEADER_TYPE = "Content-Type: ";
 	private static final String HEADER_LENGTH = "Content-Length: ";
 	private static final String HEADER_LASTMODIFIED = "Last-Modified: ";
+	private static final String HEADER_LOCATION = "Location: ";
 	
 	private static final int PORT = 80;
 	private static final byte[] buffer = new byte[1024];
@@ -174,15 +175,7 @@ public class HTTPServer
 				
 				String date = "";
 				SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z");
-				File requestFile = null;
-				if (input[1].equals("/"))
-				{
-					requestFile = new File(DOC_ROOT + INDEX_FILE);
-				}
-				else
-				{
-					requestFile = new File(DOC_ROOT + input[1]);
-				}
+				File requestFile = new File(DOC_ROOT + input[1]);
 				if (requestFile.exists())
 				{
 					
@@ -222,6 +215,18 @@ public class HTTPServer
 							outStream.write(buffer, 0, length);
 						}
 						outStream.flush();
+					}
+					else if (requestFile.getName().equals("/"))
+					{
+						/* Redirect homepage to index file */
+						out.write(HEADER_HTTP + "301 Moved Permanently\r\n");
+						out.write(HEADER_SERVER + "\r\n");
+						date = dateFormat.format(new Date());
+						out.write(HEADER_DATE + date + "\r\n");
+						out.write(HEADER_CONNECTION + "\r\n");
+						out.write(HEADER_LOCATION + INDEX_FILE + "\r\n");
+						out.write("\r\n");
+						out.flush();
 					}
 					else
 					{
