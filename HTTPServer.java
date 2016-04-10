@@ -143,6 +143,7 @@ public class HTTPServer
 	{
 		String DOC_ROOT = System.getProperty("user.dir");
 		System.out.println("DOC_ROOT: " + DOC_ROOT);
+		System.out.println("Index file: " + INDEX_FILE);
 		try
 		{
 			ServerSocket serverSocket = new ServerSocket(PORT);
