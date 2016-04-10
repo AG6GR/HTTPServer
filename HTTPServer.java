@@ -84,6 +84,8 @@ public class HTTPServer
 		SimpleDateFormat dateFormat = new SimpleDateFormat("M/d/yyyy HH:mm:ss");
 		String date = "";
 		
+		System.out.println("\tListing Directory: " + directory.getName());
+
 		String text = 
 		"<HTML>\n" +
 		     "<HEAD>\n" +
@@ -181,6 +183,7 @@ public class HTTPServer
 					
 					//String date = "";
 					//SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z");
+					
 					/* Disallow accessing hidden files */
 					if (requestFile.getName().charAt(0) == '.' || 
 						input[1].indexOf('.') != input[1].lastIndexOf('.'))
@@ -216,7 +219,7 @@ public class HTTPServer
 						}
 						outStream.flush();
 					}
-					else if (requestFile.getName().equals(DOC_ROOT))
+					else if (requestFile.getPath().equals(DOC_ROOT))
 					{
 						/* Redirect homepage to index file */
 						out.write(HEADER_HTTP + "301 Moved Permanently\r\n");
