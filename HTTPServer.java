@@ -27,7 +27,7 @@ public class HTTPServer
 	
 	private static final int PORT = 80;
 	private static final byte[] buffer = new byte[1024];
-	private static final String INDEX_FILE = "hello.html";
+	private static final String INDEX_FILE = "/hello.html";
 	private static HashMap<String, String> MIME_TYPES = null;
 	
 	static
