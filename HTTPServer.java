@@ -27,6 +27,7 @@ public class HTTPServer
 	
 	private static final int PORT = 80;
 	private static final byte[] buffer = new byte[1024];
+	private static final String INDEX_FILE = "hello.html";
 	private static HashMap<String, String> MIME_TYPES = null;
 	
 	static
@@ -172,7 +173,15 @@ public class HTTPServer
 				
 				String date = "";
 				SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z");
-				File requestFile = new File(DOC_ROOT + input[1]);
+				File requestFile = null;
+				if (input[1].equals("/"))
+				{
+					new File(DOC_ROOT + INDEX_FILE);
+				}
+				else
+				{
+					requestFile = new File(DOC_ROOT + input[1]);
+				}
 				if (requestFile.exists())
 				{
 					
