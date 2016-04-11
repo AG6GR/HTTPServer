@@ -17,6 +17,11 @@ import java.text.SimpleDateFormat;
 
 public class HTTPServer
 {
+	// Configuration constants
+	private static final int PORT = 80;
+	private static final String INDEX_FILE = "/hello.html";
+	
+	// Header keys
 	private static final String HEADER_HTTP = "HTTP/1.1 ";
 	private static final String HEADER_SERVER = "Server: Simple Java Server";
 	private static final String HEADER_DATE = "Date: ";
@@ -26,9 +31,8 @@ public class HTTPServer
 	private static final String HEADER_LASTMODIFIED = "Last-Modified: ";
 	private static final String HEADER_LOCATION = "Location: ";
 	
-	private static final int PORT = 80;
+	// Variables
 	private static final byte[] buffer = new byte[1024];
-	private static final String INDEX_FILE = "/hello.html";
 	private static HashMap<String, String> MIME_TYPES = null;
 	
 	static
@@ -219,7 +223,7 @@ public class HTTPServer
 						}
 						outStream.flush();
 					}
-					else if (requestFile.getPath().equals(DOC_ROOT))
+					else if (requestFile.getPath().equals(DOC_ROOT) && INDEX_FILE != null)
 					{
 						/* Redirect homepage to index file */
 						out.write(HEADER_HTTP + "301 Moved Permanently\r\n");
