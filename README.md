@@ -10,14 +10,14 @@ Basic server parameters can be changed by editing the constants in the HTTPServe
 ## Compilation and Execution
 Compile with the standard Java compiler.  Example syntax: 
 
-    `javac HTTPServer.java`
+    javac HTTPServer.java
 
 HTTPServer does not take any command line arguments. Example execution:
 
-    `java HTTPServer`
+    java HTTPServer
 
 HTTPServer may require root permissions to bind to port. To run in background, logging output to server.log:
 
-    `nohup sudo java HTTPServer &>server.log &`
+    nohup sudo java HTTPServer &>server.log &
 
 While executing, HTTPServer will log any received requests and debug information about the subsequent response to `stdout`.
